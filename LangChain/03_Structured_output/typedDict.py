@@ -1,18 +1,19 @@
-from langchain_huggingface import ChatHuggingFace , HuggingFaceEndpoint
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv 
-from typing import TypedDict
+from typing import TypedDict , Annotated , Optional , Literal
 
 load_dotenv()
 
-llm=HuggingFaceEndpoint(model='meta-llama/Llama-3.1-8B-Instruct'
-                        ,task='text_generation')
-model=ChatHuggingFace(llm=llm)
+model =ChatOpenAI()
 
 #schema
 class Review(TypedDict):
-    summary : str
-    sentiment : str
+    key_themes : Annotated[list[str], "Write down all the ke themes discussed in the review"]
+    summary : Annotated[str , 'A brief summary of the review']
+    sentiment : Annotated[Literal["Positive", "Negative"], 'returns the sentiment of the review positive , negative or neutral']
     stars : int 
+    pros : Annotated[Optional[list[str]], "Write down all the pros"]
+    cons : Annotated[Optional[list[str]], "Write down all the cons "]
 
 structured_model=model.with_structured_output(Review)
 
@@ -31,3 +32,5 @@ S-Pen support is unique and useful
 """)
 
 print(result)
+print(result['summary'])
+print(result['sentiment'])
