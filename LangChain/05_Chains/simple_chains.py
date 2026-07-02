@@ -15,8 +15,10 @@ prompt=PromptTemplate(
     template="Give me  5 interesting facts about {topic}",
     input_variables=['topic'])
 
-chains=  prompt | model | parser
+chain=  prompt | model | parser
 
-result=chains.invoke({'topic':'Black hole'})
+result=chain.invoke({'topic':'Black hole'})
 
 print(result)
+
+chain.get_graph().print_ascii()
