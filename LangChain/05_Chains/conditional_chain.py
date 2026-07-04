@@ -47,4 +47,6 @@ chain=classifier_chain | branch_chain
 
 result=chain.invoke({'feedback': 'This is a terrible Smartphone with bad performing processor low battery capacity and cheap quality camera'})
 
+print(result)
+
 chain.get_graph().print_ascii()
