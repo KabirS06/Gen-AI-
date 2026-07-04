@@ -13,5 +13,6 @@ loader=DirectoryLoader(
 )
 
 docs=loader.load()
+# docs=loader.lazy_load()  #for large numbers of data / PDF
 
 print(len(docs))
