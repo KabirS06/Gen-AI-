@@ -3,7 +3,7 @@ from langchain_huggingface import ChatHuggingFace , HuggingFaceEndpoint
 from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
 
-loader=PyPDFLoader('D:/Clg Kabir_/Gen-AI-/Gen-AI-/LangChain/07_Docs_Loader/dl-curriculum.pdf')
+loader=PyPDFLoader('Gen-AI-/LangChain/07_Docs_Loader/dl-curriculum.pdf')
 
 docs=loader.lazy_load()
 
